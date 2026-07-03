@@ -60,31 +60,27 @@ function initHeader() {
 }
 
 // --- Dynamic Contact Configurations Injector ---
-// Inject configuration details dynamically to UI elements
+// Only updates href links — all visible text is statically baked into HTML
 function initDynamicContactData() {
   if (typeof CONFIG === "undefined") {
     console.warn("CONFIG object not found. Ensure config/config.js is correctly loaded.");
     return;
   }
 
-  // Inject companyName, recipientEmail dynamically
   document.querySelectorAll("[data-config]").forEach(element => {
     const configKey = element.getAttribute("data-config");
-    if (CONFIG[configKey]) {
-      if (element.tagName === "A") {
-        if (configKey === "recipientEmail") {
-          element.setAttribute("href", `mailto:${CONFIG[configKey]}`);
-        } else if (configKey.startsWith("social")) {
-          element.setAttribute("href", CONFIG[configKey]);
-        }
-        
-        // Only update text content if it's a raw link without icons inside
-        if (element.children.length === 0) {
-          element.textContent = CONFIG[configKey];
-        }
-      } else {
-        element.textContent = CONFIG[configKey];
+    if (!CONFIG[configKey]) return;
+
+    if (element.tagName === "A") {
+      // Only set the href, never overwrite the visible text
+      if (configKey === "recipientEmail") {
+        element.setAttribute("href", `mailto:${CONFIG[configKey]}`);
+      } else if (configKey.startsWith("social")) {
+        element.setAttribute("href", CONFIG[configKey]);
       }
+    } else {
+      // For non-link elements (e.g. <span>, <p>) update text content
+      element.textContent = CONFIG[configKey];
     }
   });
 }
