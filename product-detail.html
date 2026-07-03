@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HK Filtration 🇭🇰 | Product Detail</title>
+  <link rel="canonical" href="https://hk-filtration.netlify.app/product-detail.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="description" content="Full technical specifications, dimensions, compatibility and materials for HK Filtration hydraulic filter elements.">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    .product-hero {
+      padding-top: calc(var(--header-height) + 2rem);
+      padding-bottom: 4rem;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative; overflow: hidden;
+    }
+    .product-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, hsla(210,100%,56%,0.1) 0%, transparent 65%);
+    }
+
+    .product-image-wrap {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 2.5rem;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 380px;
+      box-shadow: var(--shadow-lg);
+      position: relative; overflow: hidden;
+    }
+    .product-image-wrap::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+      background: linear-gradient(to top, var(--bg-secondary), transparent);
+    }
+    .product-image-wrap img {
+      max-height: 350px; object-fit: contain; width: 100%;
+      transition: transform 0.4s ease;
+    }
+    .product-image-wrap:hover img { transform: scale(1.04); }
+
+    .product-badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .badge-blue  { background: hsla(210,100%,56%,0.15); color: var(--primary); border: 1px solid hsla(210,100%,56%,0.3); }
+    .badge-gold  { background: hsla(38,92%,50%,0.15);  color: #f59e0b; border: 1px solid hsla(38,92%,50%,0.3); }
+    .badge-green { background: hsla(142,71%,45%,0.15); color: #22c55e; border: 1px solid hsla(142,71%,45%,0.3); }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    .highlight-item {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      background: var(--bg-primary);
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius);
+      border-left: 3px solid var(--primary);
+      font-size: 0.9rem;
+    }
+    .highlight-item::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; }
+
+    /* Full Specs Table */
+    .specs-section { background: var(--bg-secondary); }
+    .full-specs-table { width: 100%; border-collapse: collapse; }
+    .full-specs-table tr { border-bottom: 1px solid var(--border-color); transition: background 0.2s; }
+    .full-specs-table tr:hover { background: hsla(210,100%,56%,0.04); }
+    .full-specs-table td { padding: 0.9rem 1.25rem; font-size: 0.95rem; }
+    .full-specs-table td:first-child {
+      color: var(--text-secondary); font-weight: 500; width: 40%;
+      border-right: 1px solid var(--border-color);
+    }
+    .full-specs-table td:last-child { color: var(--text-primary); font-weight: 600; }
+
+    /* Compatible applications */
+    .compat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .compat-item {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.9rem; font-weight: 500;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .compat-item:hover { border-color: var(--primary); transform: translateY(-2px); }
+    .compat-item .icon { font-size: 1.4rem; flex-shrink: 0; }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.85rem; color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--primary); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { opacity: 0.5; }
+
+    /* Not found */
+    .not-found {
+      text-align: center;
+      padding: 8rem 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <svg viewBox="0 0 24 24">
+          <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.47,2.42C14.43,2.18 14.22,2 13.97,2H9.97C9.72,2 9.51,2.18 9.47,2.42L9.08,5.08C8.47,5.34 7.9,5.66 7.38,6.05L4.89,5.05C4.67,4.96 4.4,5.05 4.27,5.27L2.27,8.73C2.15,8.95 2.2,9.22 2.39,9.37L4.5,11C4.46,11.34 4.43,11.67 4.43,12C4.43,12.33 4.46,12.65 4.5,12.97L2.39,14.63C2.2,14.78 2.15,15.05 2.27,15.27L4.27,18.73C4.4,18.95 4.67,19.04 4.89,18.95L7.38,17.95C7.9,18.34 8.47,18.66 9.08,18.92L9.47,21.58C9.51,21.82 9.72,22 9.97,22H13.97C14.22,22 14.43,21.82 14.47,21.58L14.86,18.92C15.47,18.66 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.04 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+        </svg>
+        <span data-config="companyName">HK Filtration 🇭🇰</span>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="specifications.html">Specifications</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Open mobile menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dynamic Content Container -->
+  <div id="page-content">
+    <!-- Rendered by JS below -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container grid footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo-link">
+          <svg viewBox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.47,2.42C14.43,2.18 14.22,2 13.97,2H9.97C9.72,2 9.51,2.18 9.47,2.42L9.08,5.08C8.47,5.34 7.9,5.66 7.38,6.05L4.89,5.05C4.67,4.96 4.4,5.05 4.27,5.27L2.27,8.73C2.15,8.95 2.2,9.22 2.39,9.37L4.5,11C4.46,11.34 4.43,11.67 4.43,12C4.43,12.33 4.46,12.65 4.5,12.97L2.39,14.63C2.2,14.78 2.15,15.05 2.27,15.27L4.27,18.73C4.4,18.95 4.67,19.04 4.89,18.95L7.38,17.95C7.9,18.34 8.47,18.66 9.08,18.92L9.47,21.58C9.51,21.82 9.72,22 9.97,22H13.97C14.22,22 14.43,21.82 14.47,21.58L14.86,18.92C15.47,18.66 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.04 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
+          <span data-config="companyName">HK Filtration 🇭🇰</span>
+        </a>
+        <p>A global leader in high-performance industrial filtration systems. Delivering engineering excellence for heavy industries worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="specifications.html">Specifications</a></li>
+          <li><a href="applications.html">Applications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Request a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/></svg>
+          <a href="mailto:hk.industrial.filtration@gmail.com" data-config="recipientEmail">hk.industrial.filtration@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 HK Filtration. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config/config.js"></script>
+  <script src="data/products.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    const compatIcons = {
+      "Excavators": "🏗️", "Steel": "⚙️", "Power": "⚡", "Marine": "🚢",
+      "Mining": "⛏️", "CNC": "🔧", "Servo": "🎯", "Medical": "🏥",
+      "Offshore": "🛢️", "Agricultural": "🌾", "Crane": "🏗️", "Ship": "🚢",
+      "Press": "🔩", "Robot": "🤖", "Paper": "📄", "Plastic": "🏭",
+      "Forklift": "🏭", "Hydraulic": "💧", "Compact": "🔩", "Small": "🔧",
+      "Light": "💡", "Industrial": "🏭", "Construction": "🏗️", "Large": "🔩",
+      "High": "📈", "Return": "🔄", "Pre-Filter": "🔍", "Dock": "⚓",
+      "Turbine": "⚡", "Heavy": "🏗️", "Workshop": "🔧", "Laboratory": "🔬"
+    };
+
+    function getIcon(label) {
+      for (const [key, icon] of Object.entries(compatIcons)) {
+        if (label.includes(key)) return icon;
+      }
+      return "🔩";
+    }
+
+    function renderProduct() {
+      const params = new URLSearchParams(window.location.search);
+      const model = params.get('model');
+      const container = document.getElementById('page-content');
+
+      if (!model || !PRODUCTS[model]) {
+        container.innerHTML = `
+          <div class="not-found section-padding">
+            <h2>Product Not Found</h2>
+            <p style="color:var(--text-secondary); margin: 1rem 0 2rem;">The model you're looking for doesn't exist or the URL is incorrect.</p>
+            <a href="products.html" class="btn btn-accent">Browse All Products</a>
+          </div>`;
+        return;
+      }
+
+      const p = PRODUCTS[model];
+      document.title = `HK Filtration 🇭🇰 | ${model}`;
+
+      const specsRows = Object.entries(p.specs).map(([k, v]) =>
+        `<tr><td>${k}</td><td>${v}</td></tr>`
+      ).join('');
+
+      const highlightItems = p.highlights.map(h =>
+        `<div class="highlight-item">${h}</div>`
+      ).join('');
+
+      const compatItems = p.compatible.map(c =>
+        `<div class="compat-item"><span class="icon">${getIcon(c)}</span>${c}</div>`
+      ).join('');
+
+      container.innerHTML = `
+        <!-- Hero -->
+        <section class="product-hero">
+          <div class="container">
+            <nav class="breadcrumb">
+              <a href="index.html">Home</a>
+              <span>/</span>
+              <a href="products.html">Products</a>
+              <span>/</span>
+              <span>${model}</span>
+            </nav>
+            <div class="grid grid-2 flex-align-center">
+              <div class="reveal-left">
+                <div class="product-image-wrap">
+                  <img src="${p.image}" alt="${p.name} ${model}" loading="lazy">
+                </div>
+              </div>
+              <div class="reveal-right">
+                <span class="product-badge ${p.badgeClass}">${p.badge}</span>
+                <h1 style="font-size:clamp(1.5rem,3vw,2.2rem); margin-bottom:0.25rem;">${p.name}</h1>
+                <p style="color:var(--primary); font-weight:600; font-size:1.1rem; margin-bottom:0.5rem;">${model}</p>
+                <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:1.25rem;">${p.subtitle}</p>
+                <p style="font-size:1rem; line-height:1.75; margin-bottom:1.5rem;">${p.description}</p>
+                <div class="highlights-grid">${highlightItems}</div>
+                <div class="hero-btns" style="margin-top:1.5rem;">
+                  <a href="contact.html?subject=Quote Request: ${model}" class="btn btn-accent btn-ripple">Request Quote</a>
+                  <a href="products.html" class="btn btn-secondary">Back to Catalog</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Full Specs -->
+        <section class="section-padding specs-section">
+          <div class="container">
+            <h2 class="accent-title reveal" style="text-align:center; margin-bottom:2.5rem;">Full Technical Specifications</h2>
+            <div class="specs-table-container reveal-scale">
+              <table class="full-specs-table">
+                <tbody>${specsRows}</tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Compatible Applications -->
+        <section class="section-padding">
+          <div class="container">
+            <h2 class="accent-title reveal" style="text-align:center; margin-bottom:0.75rem;">Compatible Applications</h2>
+            <p class="reveal" style="text-align:center; color:var(--text-secondary); margin-bottom:2.5rem;">This element is certified for use in the following industries and equipment types.</p>
+            <div class="compat-grid reveal-scale">${compatItems}</div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section-padding" style="background:var(--bg-secondary);">
+          <div class="container reveal" style="text-align:center; max-width:600px; margin:0 auto;">
+            <h2 style="margin-bottom:0.75rem;">Ready to Order?</h2>
+            <p style="color:var(--text-secondary); margin-bottom:2rem;">Contact our engineering team to request a quote, confirm compatibility, or ask about custom specifications for <strong>${model}</strong>.</p>
+            <div class="hero-btns" style="justify-content:center;">
+              <a href="contact.html?subject=Quote Request: ${model}" class="btn btn-accent btn-ripple">Request a Quote</a>
+              <a href="mailto:hk.industrial.filtration@gmail.com" class="btn btn-secondary">Email Directly</a>
+            </div>
+          </div>
+        </section>
+      `;
+
+      // Re-trigger animations
+      setTimeout(() => {
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+          el.classList.add('visible');
+        });
+      }, 100);
+    }
+
+    renderProduct();
+  </script>
+</body>
+</html>
