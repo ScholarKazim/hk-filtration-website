@@ -58,10 +58,91 @@
       color: #fff;
     }
 
+    /* View toggle */
+    .view-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .view-count { color: var(--text-secondary); font-size: 0.9rem; }
+    .view-toggle {
+      display: flex;
+      gap: 0.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 0.3rem;
+    }
+    .view-btn {
+      padding: 0.4rem 0.75rem;
+      border-radius: calc(var(--radius) - 2px);
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      transition: all 0.2s;
+    }
+    .view-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Grid view */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    /* List view */
+    .products-grid.list-view {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .products-grid.list-view .product-card {
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.25rem 1.75rem;
+    }
+    .products-grid.list-view .product-card .badge { margin-bottom: 0; white-space: nowrap; }
+    .products-grid.list-view .product-card h3 { font-size: 1rem; margin: 0; }
+    .products-grid.list-view .product-card .subtitle { margin: 0; font-size: 0.82rem; }
+    .products-grid.list-view .product-card .product-specs-mini {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      margin: 0;
+      flex: 1;
+    }
+    .products-grid.list-view .product-card .spec-mini-item {
+      min-width: 100px;
+      flex: 1;
+    }
+    .products-grid.list-view .product-card .card-actions {
+      flex-direction: column;
+      margin-top: 0;
+      gap: 0.5rem;
+      min-width: 130px;
+    }
+    .products-grid.list-view .product-card::before { display: none; }
+    .products-grid.list-view .product-card .card-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      min-width: 220px;
+    }
+    .products-grid.list-view .featured-badge {
+      position: static;
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-size: 0.65rem;
     }
 
     .product-card {
@@ -184,13 +265,25 @@
   <section class="section-padding">
     <div class="container">
 
-      <!-- Filter Tabs -->
-      <div class="filter-tabs reveal">
+      <!-- Filter Tabs + View Toggle -->
+      <div class="filter-tabs reveal" style="margin-bottom:1.5rem;">
         <button class="filter-tab active" onclick="filterProducts('all', this)">All Products (11)</button>
         <button class="filter-tab" onclick="filterProducts('MF0330', this)">MF0330 Series</button>
         <button class="filter-tab" onclick="filterProducts('MF0660', this)">MF0660 Series</button>
         <button class="filter-tab" onclick="filterProducts('MF1065', this)">MF1065 Series</button>
         <button class="filter-tab" onclick="filterProducts('MF1550', this)">MF1550 Series</button>
+      </div>
+
+      <div class="view-controls reveal">
+        <span class="view-count" id="product-count">Showing 11 products</span>
+        <div class="view-toggle">
+          <button class="view-btn active" id="btn-grid" onclick="setView('grid')" title="Grid View">
+            ⊞
+          </button>
+          <button class="view-btn" id="btn-list" onclick="setView('list')" title="List View">
+            ☰
+          </button>
+        </div>
       </div>
 
       <div class="products-grid reveal-scale" id="products-grid">
@@ -441,19 +534,41 @@
   <script src="config/config.js"></script>
   <script src="js/main.js"></script>
   <script>
+    let currentView = 'grid';
+
+    function setView(view) {
+      currentView = view;
+      const grid = document.getElementById('products-grid');
+      const btnGrid = document.getElementById('btn-grid');
+      const btnList = document.getElementById('btn-list');
+
+      if (view === 'list') {
+        grid.classList.add('list-view');
+        btnList.classList.add('active');
+        btnGrid.classList.remove('active');
+      } else {
+        grid.classList.remove('list-view');
+        btnGrid.classList.add('active');
+        btnList.classList.remove('active');
+      }
+    }
+
     function filterProducts(series, btn) {
       document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
+
+      let count = 0;
       document.querySelectorAll('.product-card').forEach(card => {
         if (series === 'all' || card.dataset.series === series) {
           card.style.display = '';
+          count++;
         } else {
           card.style.display = 'none';
         }
       });
-      // Update count on All tab
-      const visible = document.querySelectorAll('.product-card:not([style*="display: none"])').length;
-      document.querySelector('.filter-tab').textContent = 'All Products (11)';
+
+      document.getElementById('product-count').textContent =
+        `Showing ${count} product${count !== 1 ? 's' : ''}`;
     }
   </script>
 </body>
