@@ -1,9 +1,6 @@
 // =========================================================================
 // CONFIGURATION FILE - MF1065.1115.10.15 Industrial Filter Website
 // =========================================================================
-// INSTRUCTIONS:
-// 1. Replace recipientEmail with your actual email address.
-// =========================================================================
 
 const CONFIG = {
   // --- Contact Email Routing (Displayed dynamically on Contact page) ---
