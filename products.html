@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HK Filtration 🇭🇰 | Full Product Catalog</title>
+
+  <!-- Favicon -->
+  <link rel="canonical" href="https://hk-filtration.netlify.app/products.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <meta name="description" content="Browse HK Filtration's complete range of industrial hydraulic filter elements. 3 to 25 micron absolute ratings, high-pressure designs, multiple sizes for heavy industry.">
+  <meta name="keywords" content="MF1065, MF0330, MF0660, MF1550, hydraulic filter elements, industrial filtration, HYDAC replacement, Parker replacement, filter catalog">
+  <meta name="robots" content="index, follow">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <style>
+    .catalog-hero {
+      padding: 8rem 0 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .catalog-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 0%, hsla(210,100%,56%,0.12) 0%, transparent 70%);
+    }
+    .catalog-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+    .catalog-hero p { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem; }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .filter-tab {
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+    }
+    .filter-tab:hover, .filter-tab.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+    .product-card:hover::before { transform: scaleX(1); }
+
+    .product-card .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .badge-blue  { background: hsla(210,100%,56%,0.15); color: var(--primary); border: 1px solid hsla(210,100%,56%,0.3); }
+    .badge-gold  { background: hsla(38,92%,50%,0.15);  color: #f59e0b; border: 1px solid hsla(38,92%,50%,0.3); }
+    .badge-green { background: hsla(142,71%,45%,0.15); color: #22c55e; border: 1px solid hsla(142,71%,45%,0.3); }
+
+    .product-card h3 { font-size: 1.1rem; color: var(--text-primary); margin: 0; font-family: 'Courier New', monospace; letter-spacing: 0.03em; }
+    .product-card .subtitle { font-size: 0.9rem; color: var(--primary); font-weight: 600; margin: 0; }
+
+    .product-specs-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    .spec-mini-item {
+      background: var(--bg-primary);
+      border-radius: var(--radius);
+      padding: 0.5rem 0.75rem;
+    }
+    .spec-mini-item .label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+    .spec-mini-item .value { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+
+    .product-card .card-actions {
+      display: flex; gap: 0.75rem; margin-top: auto;
+    }
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      border-radius: var(--radius);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: linear-gradient(135deg, var(--accent), #ff6b35);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo-link">
+        <svg viewBox="0 0 24 24">
+          <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.47,2.42C14.43,2.18 14.22,2 13.97,2H9.97C9.72,2 9.51,2.18 9.47,2.42L9.08,5.08C8.47,5.34 7.9,5.66 7.38,6.05L4.89,5.05C4.67,4.96 4.4,5.05 4.27,5.27L2.27,8.73C2.15,8.95 2.2,9.22 2.39,9.37L4.5,11C4.46,11.34 4.43,11.67 4.43,12C4.43,12.33 4.46,12.65 4.5,12.97L2.39,14.63C2.2,14.78 2.15,15.05 2.27,15.27L4.27,18.73C4.4,18.95 4.67,19.04 4.89,18.95L7.38,17.95C7.9,18.34 8.47,18.66 9.08,18.92L9.47,21.58C9.51,21.82 9.72,22 9.97,22H13.97C14.22,22 14.43,21.82 14.47,21.58L14.86,18.92C15.47,18.66 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.04 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z" />
+        </svg>
+        <span data-config="companyName">HK Filtration 🇭🇰</span>
+      </a>
+
+      <nav class="main-nav" id="main-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html" class="active">Products</a></li>
+          <li><a href="specifications.html">Specifications</a></li>
+          <li><a href="applications.html">Applications</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Open mobile menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Catalog Hero -->
+  <section class="catalog-hero">
+    <div class="container reveal">
+      <h1>Our <span class="text-gradient">Filter Catalog</span></h1>
+      <p>Premium hydraulic filter elements engineered for the world's most demanding industrial environments.</p>
+    </div>
+  </section>
+
+  <!-- Catalog Grid -->
+  <section class="section-padding">
+    <div class="container">
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs reveal">
+        <button class="filter-tab active" onclick="filterProducts('all', this)">All Products (11)</button>
+        <button class="filter-tab" onclick="filterProducts('MF0330', this)">MF0330 Series</button>
+        <button class="filter-tab" onclick="filterProducts('MF0660', this)">MF0660 Series</button>
+        <button class="filter-tab" onclick="filterProducts('MF1065', this)">MF1065 Series</button>
+        <button class="filter-tab" onclick="filterProducts('MF1550', this)">MF1550 Series</button>
+      </div>
+
+      <div class="products-grid reveal-scale" id="products-grid">
+
+        <!-- 1. MF1065.1115.10.15 — FLAGSHIP -->
+        <div class="product-card" data-series="MF1065">
+          <span class="featured-badge">★ Flagship</span>
+          <span class="badge badge-gold">10 Micron Absolute</span>
+          <h3>MF1065.1115.10.15</h3>
+          <p class="subtitle">High-Pressure Hydraulic Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">210 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">450 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +120°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="product.html" class="btn btn-accent btn-sm">View Details</a>
+            <a href="contact.html" class="btn btn-secondary btn-sm">Get Quote</a>
+          </div>
+        </div>
+
+        <!-- 2. MF1065.1115.3.15 -->
+        <div class="product-card" data-series="MF1065">
+          <span class="badge badge-blue">3 Micron Absolute</span>
+          <h3>MF1065.1115.3.15</h3>
+          <p class="subtitle">Ultra-Fine High-Pressure Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">210 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">380 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +120°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 3. MF1065.1115.6.15 -->
+        <div class="product-card" data-series="MF1065">
+          <span class="badge badge-blue">6 Micron Absolute</span>
+          <h3>MF1065.1115.6.15</h3>
+          <p class="subtitle">Fine Filtration High-Pressure Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">210 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">420 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +120°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 4. MF1065.1115.16.15 -->
+        <div class="product-card" data-series="MF1065">
+          <span class="badge badge-green">16 Micron Absolute</span>
+          <h3>MF1065.1115.16.15</h3>
+          <p class="subtitle">Standard High-Pressure Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">210 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">500 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +120°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 5. MF1065.1115.25.15 -->
+        <div class="product-card" data-series="MF1065">
+          <span class="badge badge-green">25 Micron Absolute</span>
+          <h3>MF1065.1115.25.15</h3>
+          <p class="subtitle">Coarse Filtration High-Pressure Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">210 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">550 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +120°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 6. MF0330.0610.3.15 -->
+        <div class="product-card" data-series="MF0330">
+          <span class="badge badge-blue">3 Micron Absolute</span>
+          <h3>MF0330.0610.3.15</h3>
+          <p class="subtitle">Compact Ultra-Fine Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">175 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">120 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-25°C ~ +110°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 7. MF0330.0610.10.15 -->
+        <div class="product-card" data-series="MF0330">
+          <span class="badge badge-gold">10 Micron Absolute</span>
+          <h3>MF0330.0610.10.15</h3>
+          <p class="subtitle">Compact Standard Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">175 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">160 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-25°C ~ +110°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 8. MF0660.0812.6.15 -->
+        <div class="product-card" data-series="MF0660">
+          <span class="badge badge-blue">6 Micron Absolute</span>
+          <h3>MF0660.0812.6.15</h3>
+          <p class="subtitle">Medium Fine Filtration Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">210 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">250 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +120°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 9. MF0660.0812.10.15 -->
+        <div class="product-card" data-series="MF0660">
+          <span class="badge badge-gold">10 Micron Absolute</span>
+          <h3>MF0660.0812.10.15</h3>
+          <p class="subtitle">Medium Standard Hydraulic Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">210 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">300 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +120°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 10. MF1550.1320.10.15 -->
+        <div class="product-card" data-series="MF1550">
+          <span class="badge badge-gold">10 Micron Absolute</span>
+          <h3>MF1550.1320.10.15</h3>
+          <p class="subtitle">Heavy-Duty Large-Flow Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">250 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">800 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +130°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+        <!-- 11. MF1550.1320.25.15 -->
+        <div class="product-card" data-series="MF1550">
+          <span class="badge badge-green">25 Micron Absolute</span>
+          <h3>MF1550.1320.25.15</h3>
+          <p class="subtitle">Heavy-Duty High-Flow Element</p>
+          <div class="product-specs-mini">
+            <div class="spec-mini-item"><div class="label">Max Pressure</div><div class="value">250 bar</div></div>
+            <div class="spec-mini-item"><div class="label">Flow Rate</div><div class="value">950 L/min</div></div>
+            <div class="spec-mini-item"><div class="label">Media</div><div class="value">Glass Fiber</div></div>
+            <div class="spec-mini-item"><div class="label">Temp Range</div><div class="value">-30°C ~ +130°C</div></div>
+          </div>
+          <div class="card-actions">
+            <a href="contact.html" class="btn btn-accent btn-sm">Get Quote</a>
+            <a href="specifications.html" class="btn btn-secondary btn-sm">Specifications</a>
+          </div>
+        </div>
+
+      </div><!-- /products-grid -->
+
+      <!-- CTA Strip -->
+      <div class="reveal" style="text-align:center; margin-top: 4rem; padding: 3rem; background: var(--bg-secondary); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+        <h3 style="margin-bottom:0.75rem;">Can't find the right model?</h3>
+        <p style="color:var(--text-secondary); margin-bottom:1.5rem;">We manufacture custom filter elements to your exact specifications. Send us your housing model and we'll match it.</p>
+        <a href="contact.html" class="btn btn-accent btn-ripple">Request a Custom Quote</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container grid footer-grid">
+      <div class="footer-about">
+        <a href="index.html" class="logo-link">
+          <svg viewBox="0 0 24 24"><path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.47,5.34 14.86,5.08L14.47,2.42C14.43,2.18 14.22,2 13.97,2H9.97C9.72,2 9.51,2.18 9.47,2.42L9.08,5.08C8.47,5.34 7.9,5.66 7.38,6.05L4.89,5.05C4.67,4.96 4.4,5.05 4.27,5.27L2.27,8.73C2.15,8.95 2.2,9.22 2.39,9.37L4.5,11C4.46,11.34 4.43,11.67 4.43,12C4.43,12.33 4.46,12.65 4.5,12.97L2.39,14.63C2.2,14.78 2.15,15.05 2.27,15.27L4.27,18.73C4.4,18.95 4.67,19.04 4.89,18.95L7.38,17.95C7.9,18.34 8.47,18.66 9.08,18.92L9.47,21.58C9.51,21.82 9.72,22 9.97,22H13.97C14.22,22 14.43,21.82 14.47,21.58L14.86,18.92C15.47,18.66 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.04 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/></svg>
+          <span data-config="companyName">HK Filtration 🇭🇰</span>
+        </a>
+        <p>A global leader in high-performance industrial filtration systems. Delivering engineering excellence for heavy industries worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="specifications.html">Specifications</a></li>
+          <li><a href="applications.html">Applications</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Request a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4M20,8L12,13L4,8V6L12,11L20,6V8Z"/></svg>
+          <a href="mailto:hk.industrial.filtration@gmail.com" data-config="recipientEmail">hk.industrial.filtration@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 HK Filtration. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="config/config.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function filterProducts(series, btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        if (series === 'all' || card.dataset.series === series) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      // Update count on All tab
+      const visible = document.querySelectorAll('.product-card:not([style*="display: none"])').length;
+      document.querySelector('.filter-tab').textContent = 'All Products (11)';
+    }
+  </script>
+</body>
+</html>
